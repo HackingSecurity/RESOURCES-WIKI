@@ -87,14 +87,24 @@ Salir de nuestra zona de conform no es fácil ya que estamos acostumbrados a rea
 
 ## Valorar nuestro progreso
 
-Para realmente conocer nuestro progreso sobre los distintos temas que vamos abordar seŕa importante tener una pequeña tabla donde podemos apuntar que sabemos
+Conocer nuestro progreso sobre los distintos temas que vamos abordar, seŕa una tarea importante deberiamos tener una tabla donde poder apuntar que sabemos
 desde el inicio de un tema nuevo y como evolucionamos en nuestro aprendizaje y progresos futuros con enfoques más practicos y profesionales.
+
+Para ilustrar mejor esta idea, podemos hacer uso de la siguiente tabla como ejemplo. Esta tabla se podrá ajustar a nuestras necesitades.
+
+|Fecha| Tema | conocimiento inicial| 
+| :-- | :--: | --: |
+| 01/06/23 | fuzzing | sin conocimientos previos |
+
+---
+
+|Fecha| Tema | evolución de conocimientos| 
+| :-- | :--: | --: |
+| 01/06/23 | fuzzing | se conoce nuestras herramientas como dirburter |
 
 
 ## Toma de notas
 
-Para esta labor mi recomendación es el uso de "Markdown". Podemos una guia por internet que nos enseñen paso a paso esta nuevo habilidad.
+Para esta labor mi recomendación es el uso de "Markdown". Podemos usar una guia por internet que nos enseñen paso a paso esta nuevo habilidad.
 
 ![Tutorial Markdown](https://geekland.eu/aprender-markdown-en-minutos/ "esto es un tutorial para aprender Markdown")
-
-![](https://www.lashuertas.es/wp-content/uploads/2021/07/zapateria-loogo-lashuertas.jpg)
