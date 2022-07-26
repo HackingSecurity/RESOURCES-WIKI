@@ -90,3 +90,9 @@ Salir de nuestra zona de conform no es fácil ya que estamos acostumbrados a rea
 Para realmente conocer nuestro progreso sobre los distintos temas que vamos abordar seŕa importante tener una pequeña tabla donde podemos apuntar que sabemos
 desde el inicio de un tema nuevo y como evolucionamos en nuestro aprendizaje y progresos futuros con enfoques más practicos y profesionales.
 
+
+## Toma de notas
+
+Para esta labor mi recomendación es el uso de "Markdown". Podemos una guia por internet que nos enseñen paso a paso esta nuevo habilidad.
+
+![Tutorial Markdown](https://geekland.eu/aprender-markdown-en-minutos/ "esto es un tutorial para aprender Markdown)
