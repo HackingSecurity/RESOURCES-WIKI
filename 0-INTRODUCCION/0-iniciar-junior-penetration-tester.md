@@ -1,17 +1,21 @@
-# Iniciar en el mundo de la ciberseguridad
-Para iniciar en un mundo tan amplio como es la ciberseguridad debemos ser ordenados, constantes y  lidiar constantemente con la frustación, ya que todo no saldrá a la primera. por tanto este primer punto de ser ordenador tiene que ser totalmente obligatorio, sino nos perderemos rápidamente y se nos quitarán las ganas de seguir progresando en esta área.
+# ¿Como iniciarse en el mundo de la ciberseguridad?
+
+Para iniciarse en un mundo tan amplio como es la ciberseguridad debemos ser ordenados, constantes y lidiar con la frustación como algo natural, ya que todo no saldrá a la primera. por tanto este primer punto de ser ordenador tiene que ser totalmente obligatorio, sino nos perderemos rápidamente y se nos quitarán las ganas de seguir progresando en esta área.
 
 # ¿Que necesitamos?
+
 Necesitamos un computador y conexión a internet. Esto sería lo más básico por supuesto pero profundizemos un poco más.
 
-Para poder realizar las distintas pruebas que necesitamos debemos tener instalados de forma física en nuestro disco duro o de forma virtual  por ejemplo con Virtualbox los sitemas operativos:
+Para poder realizar las distintas pruebas que necesitamos debemos tener instalados de forma física en nuestro disco duro o de forma virtual  por ejemplo con Virtualbox los siguientes sistemas operativos:
 
 * Linux
 * Windows
 
 Las versiones quedan de tu mano ya que entre más tipos de sistemas operativos probemos más nos vamos a desenvolver  en este campo.
 
-Recomendaciones particulares, tener instalado  para linux (kali linux o parrot OS) que son distribuciones de pentesting y nos vendrá con bastantes programas que iremos a utilizarlar y por la parte de Windows tenemos "windows 10" que lo usaremos para conocer en profundidad como funciona,como instalar y administrar servicios en él.
+Recomendaciones particulares, tener instalado  para linux (kali linux o parrot OS) que son distribuciones de pentesting y nos vendrán con bastantes programas que iremos a utilizar y por la parte de Windows tenemos "windows 10" que lo usaremos para conocer en profundidad como funciona, como instalar y administrar servicios en él.
+
+La instalación y configuración de estos sistemas operativos deberían ser trivial, por tanto no incidemos más en este punto.
 
 Una vez salvada la primera parte de como podemos trabajar y tener nuestro entorno, podemos centrarnos en los temas que debemos conocer antes de abordar la inmensidad de este universo.
 
@@ -21,7 +25,7 @@ Llegados a este punto debemos "pensar como pensamos" normalmente y a que es debi
 
 Esta pregunta casi filosófica no es más que una vuelta de tuerca para analizar como resolvemos problemas, para ello hemos visto como realizar un procedimiento para dar con una solución a ese problema. Pero ¿hemos intentado resolver ese mismo problema abordandolo desde distintos puntos de vista o pensando más  alla? y centrarnos en como funciona eso que queremos resolver, la respuesta es simple, No.
 
-Aquí queremos desarrollar la forma de pensar "outside the box" ya que es una parte esencial de la "mentalidad hacker", será dificil pero muy divertido ya que profundizaremos mucho en como funciona las cosas para poder saltarnos de algún u otro modos las reglas que están impuestas.
+Aquí queremos desarrollar la forma de pensar "outside the box" (pensar fuera de la caja) ya que es una parte esencial de la "mentalidad hacker", será dificil pero muy divertido ya que profundizaremos mucho en como funciona las cosas para poder saltarnos de algún u otro modos las reglas que están impuestas.
 
 Para ello debemos de saber como funcionan las cosas, como están estructuradas y como usarlar. Quizas esto es la parte más técnica pero esencial para tener éxito profesional en este sector.
 
@@ -38,7 +42,7 @@ Por otro lado va ser una constante en nuestro inicio que es el fallo sin fallar 
  https://en.wikipedia.org/wiki/Pareto_principle
 
 
-Siempre apostaremos en que debemos aplicar un aprendizaje activo para ir asimilando conceptos, pero no es hasta que de verdad nos ponemos hacer cosas cuando obtendremos las habilidades más consolidadas de la materia que estemos aprendiendo, a esto se le conoce como aprendizaje activo y desde mi punto de vista el más fuerte en nuestro recuerdos a largo plazo.
+Siempre apostaremos en que debemos aplicar un aprendizaje activo para ir asimilando conceptos, pero no es hasta que de verdad nos ponemos hacer cosas cuando obtendremos las habilidades más consolidadas de la materia que estemos aprendiendo, a esto se le conoce como aprendizaje activo y desde mi punto de vista el más fuerte para nuestros recuerdos a largo plazo.
 
 
 
@@ -47,7 +51,7 @@ Hay que tener en cuenta que sin estar motivados y tener un focus y una meta conc
 Eso si debemos sabemos que es realmente lo importante y distinguir de la paja y el trigo.
 
 
-## Documentación de lo que hagamos
+## Documentación de todos los pasos que realizemos
 
 Para documentar nuestras pequeñas hazañas debemos de tener:
 
@@ -58,9 +62,9 @@ Para documentar nuestras pequeñas hazañas debemos de tener:
 
 ## Organización 
 
-Esto es crucial y debemos ser los más organizados posibles para lidiar con la frustación, pero así contra usted mismo.
+Esto es crucial y debemos ser los más organizados posibles para lidiar con la frustación, pero  lo más importante es contra usted mismo.
 
-"Cuesta ser ordenado es verdad pero una vez que todo está ordenado todo es más facil" by jece
+"Cuesta ser ordenado es verdad, pero una vez superada esta brecha mental agradeceremos el esfuerzo." by jece
 
 * Uso de listas de prioridad para finalizar tareas pendientes o quehaceres varios pintos
 * Uso de métodología scrum por ejemplo
@@ -76,7 +80,7 @@ Por tanto atención y enfoque no es lo mismo, ya que la atención está influenc
 
 ## Combatir la zona de comodidad
 
-Existe lo que se llama la ley de Yerker-Dodson (la ley dicta que el rendmiento aumenta con la excitación fisiológica o mental, pero solo hasta cierto punto)
+Existe lo que se llama la ley de Yerker-Dodson que es un ley psicologica (la ley dicta que el rendmiento aumenta con la excitación fisiológica o mental, pero solo hasta cierto punto)
 
 * https://es.wikipedia.org/wiki/Ley_de_Yerkes-Dodson
 
@@ -92,14 +96,14 @@ desde el inicio de un tema nuevo y como evolucionamos en nuestro aprendizaje y p
 
 Para ilustrar mejor esta idea, podemos hacer uso de la siguiente tabla como ejemplo. Esta tabla se podrá ajustar a nuestras necesitades.
 
-|Fecha| Tema | conocimiento inicial| 
-| :-- | :--: | --: |
+|Fecha inicio| Tema/subtema | conocimiento inicial| 
+| :--: | :--: | :--: |
 | 01/06/23 | fuzzing | sin conocimientos previos |
 
 ---
 
-|Fecha| Tema | evolución de conocimientos| 
-| :-- | :--: | --: |
+|Fecha control| Tema/subtema | evolución de conocimientos| 
+| :--: | :--: | --: |
 | 01/06/23 | fuzzing | se conoce nuestras herramientas como dirburter |
 
 
