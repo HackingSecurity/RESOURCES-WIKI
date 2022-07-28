@@ -38,5 +38,30 @@ Conocer como funciona Cloudflare o Modsecurity que ayuda a bloquear tráfico mal
 
 Debemos de conocer los tres tipos de proxies
 
-* Forwad proxy o dedicado configurar uno
+* Forwad proxy o dedicado configurar uno (filtra las solicitudes salientes)
+* Proxy inverso (filtra la solicitudes entrantes)
+* Proxy transparente (no somos concientes de su existencia)
+
+# Conocmiento del modelo de red
+
+* TCP (transmission control protocol )/IP (internet protocol)
+* Modelo OSI
+
+Protocolos más usados:
+
+* ICMP (Internet control message protocol ) UDP (user datagram protocol)
+* IPv4 /IPv6
+* IPsec
+* IGMP
+* RIP
+* OSPF
+
+# DIrecciones IP
+
+IP describe la dirección postal única y el distrito del edificio del destinatario
+MAC Describe el piso y apartamento del receptor.
+
+Concepto que debemos profundizar:
+* subnetting
+
 
