@@ -112,3 +112,45 @@ Para ilustrar mejor esta idea, podemos hacer uso de la siguiente tabla como ejem
 Para esta labor mi recomendación es el uso de "Markdown". Podemos usar una guia por internet que nos enseñen paso a paso esta nuevo habilidad.
 
 ![Tutorial Markdown](https://geekland.eu/aprender-markdown-en-minutos/ "esto es un tutorial para aprender Markdown")
+
+Ejemplo de algunas de las opciones que podemos usar en Markdown:
+
+**Encebezados**
+* \# \## \###
+
+**Incluir una cita** 
+* \>
+
+**Listas**
+
+* \* \-
+* \1. \2.
+
+**Separaiones fisicas** 
+* \---
+
+**Estilos al texto**
+* \**texto/**
+* \*texto/*
+* \~~texto/~~
+* \***texto/***
+* \~~**texto/~~**
+
+**Insertar enlaces**
+*\[texto](url"texto para el enlace")
+
+**Insertar imagnes**
+* \![texto alternativo](url_imagen "texto  para la imagen")
+
+**Insertar codigo**
+* \```htm ..... ```
+
+**Insertar lista de tareas**
+* \- []
+* \- [X]
+
+**Crear tablas**
+* \| \: \-
+
+**Anular markdown**
+* \
