@@ -24,8 +24,8 @@
 * Navegar entre los editores del grupo [alt + 1,2,3,4]
 
 ## Modo zen
-
-* modo zen [ctrl + k z]
+* Aumentar el alto del editor [ctrl + mayus + v , ctrl + mayus + uparrow ]
+* modo* Aumentar el alto del editor [ctrl + mayus + v , ctrl + mayus + uparrow ] zen [ctrl + k z]
 
 # exploradores
 
