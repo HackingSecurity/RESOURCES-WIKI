@@ -1,0 +1,13 @@
+#Versión del documento docker-compose
+version: "3.8"
+
+services:
+  app:
+    image: 
+    environment:
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+  db:
+    image: mongo
