@@ -19,8 +19,8 @@
 ## Grupo de trabajo
 
 * Abrir grupos de trabajo [Ctrl + 1,2,3]
-* Mandar editor al grupo derecho [ctrl + v rightarrow]
-* Mandar editor al grupo izquierdo [ctrl + v rightarrow]
+* Mandar editor al grupo derecho [ctrl + alt rightarrow]
+* Mandar editor al grupo izquierdo [ctrl + alt rightarrow]
 * Navegar entre los editores del grupo [alt + 1,2,3,4]
 
 ## Modo zen
@@ -34,4 +34,10 @@
 ## Terminal
 
 * Focus terminal [ctrl + `]
-* nueva terminal [ctrl + shift `]
+* Nueva terminal [ctrl + shift `]
+* Dividir termina [ctrl + shift + alt + c
+* Disminuir alto  terminal [ctrl + shift + c ctrl + shitf + downarrow]
+* Aumentar alto terminal [ctrl + shift + c ctrl + shitf + uparrow]
+* Disminuir ancho  terminal [ctrl + shift + c ctrl + shitf + leftarrow]
+* aumentar alto  terminal [ctrl + shift + c ctrl + shitf + rigtharrow]
+* Cambiar entre terminales [alt + right|left arrow]
