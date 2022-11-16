@@ -1,11 +1,22 @@
+#Cosas a tener en cuenta:
+#El espacio es muy importante en .yml
+
 #Versión del documento docker-compose
+#Depende de la versión permite cosas o no si no estuviesen soportadas
 version: "3.8"
 
+#Servicios que componen 
 services:
+  #Describe una parte de nuestra aplicación
   app:
-    image: 
+    #Todo contenedor en docker nace de una imagen.
+    image:
+    #Definir variables de entorno
     environment:
+      #Damos nombre a nuestra variable
+      MONGO: "lo que sea"
     depends_on:
+      #Depende de db y se tiene que lanzar primero para que se lanze app
       - db
     ports:
       - "3000:3000"
