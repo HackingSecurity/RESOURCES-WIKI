@@ -22,3 +22,5 @@ Python puede trabajar muy bien con Jupiter por lo tanto haremos los ejercicios d
 [cheatsheet-bueno](https://cheatography.com/diegojserrano/cheat-sheets/python-variables-y-operadores/)
 
 [cheatsheet-de-todo](https://www.ironhack.com/es/es/blog/los-mejores-cheatsheets-para-data-science)
+
+https://cheatography.com/torerohk/cheat-sheets/python-3-espanol/
