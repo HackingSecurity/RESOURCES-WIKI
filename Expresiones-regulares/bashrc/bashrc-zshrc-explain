@@ -1,0 +1,97 @@
+#https://stackoverflow.com/questions/45850940/trouble-understanding-a-bash-command
+#https://www.askapache.com/linux/zen-terminal-escape-codes/
+#http://es.tldp.org/COMO-INSFLUG/COMOs/Bash-Prompt-Como/Bash-Prompt-Como-5.html
+#https://www.shellhacks.com/bash-colors/
+#https://gist.github.com/JBlond/2fea43a3049b38287e5e9cefc87b2124
+
+#very interesting
+#https://github.com/fidian/ansi
+
+#character 27 = 033 = 0x1b = ^[ = \e
+
+#\e introduce secuencia de control -> comienzo de código ANSI 
+#m carácter al final de la secuencia -> "[" y "m" se interpreta ;
+#0 desabilita todo el formato del texto anterior
+
+#Colores: {} sustituye
+#33 -> amarillo
+#\e[0;{}m
+#\e[0;33m
+
+
+#\e[0m -> revertir los cambios a su valor predeterminado [reset]
+#\033[1m  -> habilita la negrita
+#\033 -> "ESC"
+#\033[0m  -> restablece el formato
+#\033[22m -> restablecer la negrita
+
+
+#Hay que tener en cuenta que podemos implementar estas configuracion en cualquier shell que tenemos
+# para comprobar nuestra shell -> "echo $SHELL " posteriormente modificamos el fichero correspondiente -> ~/.zshrc (en nuestro caso)
+
+#Regular colors -> rc
+endrc="\e[0m\e[0m"
+blackrc="\e[0;30m\e[1m"
+redrc="\e[0;31m\e[1m"
+greenrc="\e[0;32m\e[1m"
+yellowrc="\e[0;33m\e[1m"
+bluerc="\e[0;34m\e[1m"
+purplerc="\e[0;35m\e[1m"
+cyanrc="\e[0;36m\e[1m"
+whiterc="\e[0;37m\e[1m"
+
+#Otra opcion:
+#Regular colors -> rc
+endrc="\033[0m\e[0m"
+blackrc"\e[0;30m\033[1m"
+redrc="\e[0;31m\033[1m"
+greenrc="\e[0;32m\033[1m"
+yellowrc="\e[0;33m\033[1m"
+bluerc="\e[0;34m\033[1m"
+purplerc="\e[0;35m\033[1m"
+cyanrc="\e[0;36m\033[1m"
+whiterc="\e[0;37m\033[1m"
+
+
+
+#my funtions
+
+#Extrae solo los puertos
+function extractPorts(){
+    echo -e "\n${bluerc}[*] Extracting information...${endrc}\n"
+    ip_address=$(cat allPorts | grep -oP "\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" | sort -u)
+    open_ports=$(cat allPorts | grep -oP "\d{1,6}/open" | awk '{print $1}' FS='/' | xargs | tr " " ",")
+    echo -e "\t${cyanrc}[*] IP Address : ${endrc}${greenrc}$ip_address${endrc}"
+    echo -e "\t${cyanrc}[*] Ports : ${endrc}${greenrc}$open_ports${endrc}\n"
+    echo $open_ports | xclip -selection clipboard
+    echo -e "${yellowrc} Ports has been copied to clipboard!${endrc}\n"
+}
+
+
+#Extrae ip y puertos
+function extractIP_Ports(){
+    echo -e "\n${bluerc}[*] Extracting information...${endrc}\n"
+    ip_address=$(cat allPorts | grep -oP '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}' | sort -u)
+    open_ports=$(cat allPorts | grep -oP '\d{1,6}/open' | awk '{print $1}' FS='/' | xargs | tr ' ' ',')
+    echo -e "\t${cyanrc}[*] IP Address : ${endrc}${greenrc}$ip_address${endrc}"
+    echo -e "\t${cyanrc}[*] Ports : ${endrc}${greenrc}$open_ports${endrc}\n"
+    echo "$ip_address -p$open_ports" | tr -d '\n' | xclip -selection clipboard 
+    echo -e "${yellowrc} IP and Ports has been copied to clipboard!${endrc}\n"
+}
+
+
+#implementacion en .bashrc
+
+
+#Dependencias:
+
+#uso de xclip para copiar del portapele ver:
+#$sudo apt install xclip
+#$man xclip
+#$/-selection 
+#$/clipboard
+
+#Actualizar bash
+
+source ~/.bashrc
+source ~/.zshrc
