@@ -80,6 +80,16 @@ function extractIP_Ports(){
 }
 
 
+
+
+#Crear un conjunto de carpeta 
+# cta = carpetas de trabajo activo
+function  ccta(){
+    mkdir -p nmap/{exploit,scripts,vuln,etc}
+}
+
+
+
 #implementacion en .bashrc
 
 
