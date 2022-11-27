@@ -41,3 +41,9 @@
 * Disminuir ancho  terminal [ctrl + shift + c ctrl + shitf + leftarrow]
 * aumentar alto  terminal [ctrl + shift + c ctrl + shitf + rigtharrow]
 * Cambiar entre terminales [alt + right|left arrow]
+
+# Cosas a tener en cuenta
+
+Si queremos abrir un fichero en un directorio podemos usar code seguido 
+por el fichero para abrirlo.
+* code fichero

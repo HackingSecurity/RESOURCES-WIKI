@@ -53,7 +53,6 @@ with open('csv_ips.csv', newline='', mode='r') as File:
     for fila in filas:
         stringFila = str(fila)
         arrayString = stringFila.split(',')
-        #Podemos modificar la busqueda con expresiones regulares
         ip = arrayString[1]
         correo = arrayString[3]
         comoprobarFila(ip,correo)
