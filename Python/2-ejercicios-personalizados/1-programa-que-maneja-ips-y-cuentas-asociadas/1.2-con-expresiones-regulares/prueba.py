@@ -1,5 +1,6 @@
 import csv
-
+#uso de regular expressions
+import re
 #https://docs.python.org/es/3/library/csv.html 
 
 
