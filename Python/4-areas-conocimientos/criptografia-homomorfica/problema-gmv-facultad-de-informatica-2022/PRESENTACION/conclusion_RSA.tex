@@ -1,0 +1,15 @@
+\input{config_python}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}Productorio de la columna encriptada }
+\PY{n}{producto} \PY{o}{=} \PY{p}{(}\PY{n}{prod}\PY{p}{(}\PY{n}{fumar\PYZus{}encrip}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZpc{}} \PY{n}{n}
+
+\PY{c+c1}{\PYZsh{}Función para \PYZdq{}factorizar\PYZdq{}}
+\PY{k}{def} \PY{n+nf}{factP}\PY{p}{(}\PY{n}{mensaje\PYZus{}descifrado}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{:}     
+    \PY{n}{result} \PY{o}{=} \PY{l+m+mi}{0}
+    \PY{n}{num} \PY{o}{=} \PY{l+m+mi}{0}
+    \PY{k}{while}\PY{p}{(}\PY{n}{num} \PY{o}{!=} \PY{n}{mensaje\PYZus{}descifrado}\PY{p}{)}\PY{p}{:} 
+        \PY{n}{result} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1}
+        \PY{n}{num} \PY{o}{=} \PY{n+nb}{pow}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{result}\PY{p}{,}\PY{n}{n}\PY{p}{)}
+        
+    \PY{k}{return} \PY{n}{result}
+\end{Verbatim}

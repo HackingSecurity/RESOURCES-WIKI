@@ -1,0 +1,15 @@
+\input{config_python}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{E\PYZus{}PAI}\PY{p}{(}\PY{n}{publicKey}\PY{p}{,} \PY{n}{mensaje}\PY{p}{)}\PY{p}{:} 
+    \PY{n}{r} \PY{o}{=} \PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n}\PY{p}{)} 
+    \PY{n}{nc} \PY{o}{=} \PY{n}{n}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+    \PY{k}{return} \PY{n+nb}{pow}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{n}\PY{p}{)}\PY{p}{,} \PY{n}{mensaje}\PY{p}{,} \PY{n}{nc}\PY{p}{)} \PY{o}{*} \PY{n+nb}{pow}\PY{p}{(}\PY{n}{r}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{n}{nc}\PY{p}{)}
+
+\PY{k}{def} \PY{n+nf}{D\PYZus{}PAI}\PY{p}{(}\PY{n}{privateKey}\PY{p}{,} \PY{n}{criptotexto}\PY{p}{)}\PY{p}{:} 
+    \PY{n}{n} \PY{o}{=} \PY{n}{privateKey}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+    \PY{n}{phi} \PY{o}{=} \PY{n}{privateKey}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+    \PY{n}{nc} \PY{o}{=} \PY{n}{n}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+    \PY{n}{numerador} \PY{o}{=} \PY{p}{(}\PY{p}{(}\PY{n+nb}{pow}\PY{p}{(}\PY{n}{criptotexto}\PY{p}{,} \PY{n}{phi}\PY{p}{,} \PY{n}{nc}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)} \PY{o}{/}\PY{o}{/} \PY{n}{n}\PY{p}{)} \PY{o}{\PYZpc{}} \PY{n}{n}
+    \PY{n}{denominador} \PY{o}{=} \PY{n+nb}{pow}\PY{p}{(}\PY{n}{phi}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n}\PY{p}{)}
+    \PY{k}{return} \PY{p}{(}\PY{n}{numerador} \PY{o}{*} \PY{n}{denominador}\PY{p}{)} \PY{o}{\PYZpc{}} \PY{n}{n} 
+\end{Verbatim}

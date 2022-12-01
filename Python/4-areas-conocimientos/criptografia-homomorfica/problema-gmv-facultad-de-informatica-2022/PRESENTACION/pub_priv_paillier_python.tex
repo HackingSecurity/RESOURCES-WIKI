@@ -1,0 +1,17 @@
+\input{config_python}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{N\PYZus{}LEN} \PY{o}{=} \PY{l+m+mi}{1024}
+\PY{n}{p} \PY{o}{=} \PY{n}{q} \PY{o}{=} \PY{n}{n} \PY{o}{=} \PY{k+kc}{None}
+\PY{n}{n\PYZus{}len} \PY{o}{=} \PY{l+m+mi}{0}
+\PY{k}{while} \PY{n}{n\PYZus{}len} \PY{o}{!=} \PY{n}{N\PYZus{}LEN}\PY{p}{:}
+    \PY{n}{p} \PY{o}{=} \PY{n}{getprimeover}\PY{p}{(}\PY{n}{N\PYZus{}LEN} \PY{o}{/}\PY{o}{/} \PY{l+m+mi}{2}\PY{p}{)}
+    \PY{n}{q} \PY{o}{=} \PY{n}{p}
+    \PY{k}{while} \PY{n}{q} \PY{o}{==} \PY{n}{p}\PY{p}{:}
+        \PY{n}{q} \PY{o}{=} \PY{n}{getprimeover}\PY{p}{(}\PY{n}{N\PYZus{}LEN} \PY{o}{/}\PY{o}{/} \PY{l+m+mi}{2}\PY{p}{)}
+    \PY{n}{n} \PY{o}{=} \PY{n}{p} \PY{o}{*} \PY{n}{q}
+    \PY{n}{n\PYZus{}len} \PY{o}{=} \PY{n}{n}\PY{o}{.}\PY{n}{bit\PYZus{}length}\PY{p}{(}\PY{p}{)}
+
+\PY{n}{phi\PYZus{}n\PYZus{}P} \PY{o}{=} \PY{p}{(}\PY{n}{p}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{n}{q}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
+\PY{n}{public\PYZus{}key\PYZus{}P} \PY{o}{=} \PY{n}{n} 
+\PY{n}{private\PYZus{}key\PYZus{}P} \PY{o}{=} \PY{p}{[}\PY{n}{n}\PY{p}{,} \PY{n}{phi\PYZus{}n\PYZus{}P}\PY{p}{]}
+\end{Verbatim}

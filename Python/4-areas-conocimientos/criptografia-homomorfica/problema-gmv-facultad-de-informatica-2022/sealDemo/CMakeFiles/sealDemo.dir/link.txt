@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/sealDemo.dir/sealDemo.cpp.o -o sealDemo  /usr/local/lib/libseal-4.0.a 

@@ -1,0 +1,13 @@
+\input{config_python}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{E\PYZus{}RSA}\PY{p}{(}\PY{n}{publicKey}\PY{p}{,} \PY{n}{mensaje}\PY{p}{)}\PY{p}{:} 
+    \PY{n}{n} \PY{o}{=} \PY{n}{publicKey}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+    \PY{n}{e} \PY{o}{=} \PY{n}{publicKey}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+    \PY{k}{return} \PY{n+nb}{pow}\PY{p}{(}\PY{n}{mensaje}\PY{p}{,} \PY{n}{e}\PY{p}{,} \PY{n}{n}\PY{p}{)}
+
+\PY{k}{def} \PY{n+nf}{D\PYZus{}RSA}\PY{p}{(}\PY{n}{privateKey}\PY{p}{,} \PY{n}{criptotexto}\PY{p}{)}\PY{p}{:} 
+    \PY{n}{n} \PY{o}{=} \PY{n}{privateKey}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+    \PY{n}{d} \PY{o}{=} \PY{n}{privateKey}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+    \PY{k}{return} \PY{n+nb}{pow}\PY{p}{(}\PY{n}{criptotexto}\PY{p}{,} \PY{n}{d}\PY{p}{,} \PY{n}{n}\PY{p}{)}
+\end{Verbatim}

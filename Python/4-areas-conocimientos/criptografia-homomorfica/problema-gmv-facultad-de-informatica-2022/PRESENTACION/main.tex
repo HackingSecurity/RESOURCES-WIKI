@@ -1,0 +1,291 @@
+\documentclass{beamer} 
+\input{preambulo}
+\input{preambulo_python}
+        
+\begin{document}
+	
+\begin{frame}
+    \centering
+	\includegraphics[scale = 0.95]{IMG/portada.png}
+\end{frame}
+
+\begin{frame}{Contenido}
+	\tableofcontents
+\end{frame}
+
+\section{Problema}
+\begin{frame}{Problema}
+	\justifying
+    El volumen de datos con los que una empresa trabaja no permite que esta los almacene de forma local. Estas empresas deben recurrir a Proveedores cloud que permitan gestionar de forma ágil y escalable estos paquetes de información. 
+    \begin{figure}[H]
+    	\centering
+		\includegraphics[scale=0.7]{IMG/cloud_computing.jpg}
+	\end{figure}
+
+\end{frame}
+
+\begin{frame}{Problemática}
+    \justifying
+    Dado un dataset, el objetivo es poder analizarlo de una forma segura. Por tanto, podemos dividir el problema en dos fases: 
+    \begin{enumerate}
+        \item Encontrar una forma de guardar los datos de forma segura 
+        \item Encontrar una forma de procesar los datos
+    \end{enumerate} 
+
+    En este caso, GMV pone a nuestra disposición un dataset de pacientes con cáncer de pulmón: 
+    \url{https://www.kaggle.com/datasets/mysarahmadbhat/lung-cancer} para poner en práctica la solución que vamos a plantear. 
+\end{frame}
+
+\section{Cifrado homomórfico}
+\begin{frame}{Cifrado homomórfico}
+    \justifying
+	Se dice que un sistema de cifrado es \textbf{homomórfico} si es capaz de realizar una operación algebraica concreta sobre un texto claro, equivalente a otra operación algebraica (no necesariamente la misma) sobre el resultado cifrado de ese texto original. Es decir, si denotamos por $E$ a una supuesta función que cifra mensajes, tendríamos: 
+   $$ E(m_1  \circ  m_2) = E(m_1)  \ast  E(m_2) $$
+	donde $\circ$ y $\ast$ son dichos operadores.
+\end{frame}
+
+
+%\begin{frame}{Cifrado homomórfico}
+%    \justifying
+%	El uso de un sistema de cifrado homomórfico está motivado por la obtención de un algoritmo de descifrado que defina, para una clave privada, un homomorfismo de grupos entre el espacio del mensaje cifrado ($\mathcal{C}$) y el del mensaje sin cifrar ($\mathcal{M}$): 
+
+%    $$ f: \mathcal{C} \rightarrow \mathcal{M} $$
+
+%    Así, podremos enviar la información cifrada al servicio Cloud, para tratarla encriptada y, posteriormente, traer al local las conclusiones para ser descifradas.
+%\end{frame}
+
+\begin{frame}{Cifrado homomórfico}
+    \begin{figure}[H]
+    	\centering
+		\includegraphics[scale=0.9]{IMG/diagrama}
+	\end{figure}
+\end{frame}
+
+\section{Primera aproximación: Algoritmo RSA}
+\begin{frame}{RSA}
+    \justifying
+    Componentes del método: 
+    \begin{itemize}
+    \item Clave pública: $(N,e)$
+    \begin{itemize}
+        \item $N = p \cdot q$ es producto de dos primos $p$ y $q$ suficientemente grandes y distintos 
+        \item $e$, exponente de cifrado, es un entero positivo tal que $\mbox{mcd}(e,\phi(N)) = 1$, donde $\phi(N) = (p-1)(q-1)$ es la función $\phi$ de Euler
+    \end{itemize}
+    \item Clave privada: $(N,d)$ 
+        \begin{itemize}
+            \item $d$, exponente de descifrado, es el inverso de $e$ módulo $\phi(N)$
+        \end{itemize}
+    \end{itemize}
+    Con esto ingredientes ya podemos caracterizar los espacios de textos claros y cifrados como: 
+    $$ \mathcal{M} = \mathcal{C} = (\mathbb{Z}_N)^* $$
+    que es el grupo multiplicativo de las unidades módulo $N$.  
+\end{frame}
+
+\begin{frame}{RSA} 
+    Y la función que habíamos denotado por $E$, la podemos caracterizar mediante el isomorfismo de grupos 
+    $$ E: (\mathbb{Z}_N)^* \longrightarrow (\mathbb{Z}_N)^* $$
+    $$ m \mapsto m^e\, mod \, N $$
+    que permite descifrar un mensaje cifrado $c$ mediante su inversa
+    $$D(c) = c^d \, mod \, N$$
+    Finalmente como $((\mathbb{Z}_N)^*,\; \cdot)$ es un grupo multiplicativo obtenemos la propiedad deseada para el producto 
+    $$E(m_1 \cdot m_2) = E(m_1) \cdot E(m_2)$$
+\end{frame}
+
+\begin{frame}{Implementación en Python: RSA}
+\input{fun_E_D_RSA}
+\end{frame}
+
+%\begin{frame}{Implementación en Python: RSA}
+%\input{encrip_colum_RSA_python}
+%\end{frame}
+
+%\begin{frame}{Implementación en Python: RSA}
+%\input{conclusion_RSA}
+%\end{frame}
+
+%\begin{frame}{Implementación en Python: RSA}
+%\input{resultado_RSA}
+%\end{frame}
+
+\begin{frame}{Conclusión del análisis con RSA}
+Del análisis de los datos se desprende la siguiente tabla: 
+\newline
+\newline
+\begin{center}
+\begin{table}[]
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Fumador} & \textbf{No fumador} \\ \hline
+174              & 135                 \\ \hline
+\end{tabular}
+\end{table}
+\end{center}
+\end{frame}
+
+\begin{frame}{Limitaciones RSA}
+Al ser un proceso determinista, el método RSA es potencialmente inseguro para el fin que se ha propuesto.
+\newline
+\newline
+El segundo principio de Kerckhoffs nos advierte de lo siguiente
+\newline
+\newline
+\begin{quote}
+    La efectividad del sistema no debe depender de que su diseño permanezca en secreto.
+\end{quote}
+\newline
+\newline
+Los pacientes fumadores y no fumadores siempre se cifran de la misma manera. Esto se puede traducir en que, en el peor caso, con un par de evaluaciones obtenemos si un paciente es o no fumador. Por tanto, el algoritmo no es seguro.  
+\end{frame}
+
+\section{Mejorando el sistema: Algoritmo de Paillier}
+\begin{frame}{Sistema de encriptación de Paillier}
+Se dice que un procedimiento es CPA seguro si en tiempo polinómico un atacante no puede distinguir entre dos criptotextos partiendo de dos textos sin cifrar elegidos por él. 
+\newline
+\newline
+Debemos buscar un algoritmo de cifrado que sea homomórfico y además CPA seguro. Por ejemplo, el sistema de encriptación de Paillier. 
+\newline
+\newline
+Este sistema es un algoritmo asimétrico probabilístico que se utiliza en criptografía de clave pública y fue inventado por Pascal Paillier en 1999.
+\end{frame}
+
+\begin{frame}{Esquema de Paillier}
+\begin{enumerate}
+    \item \textbf{Generación de claves.} Se generan dos primos aleatorios $p$ y $q$ y se obtiene la clave pública $n=pq$ y la clave privada $(n, \phi(n))$.
+    \item \textbf{Cifrado}. El conjunto de textos sin cifrar será $\mathbb{Z}_n$ y el de criptotextos $(\mathbb{Z}_{n^2})^*$. Para cifrar un mensaje $m \in \mathbb{Z}_n$, se elige $r \in (\mathbb{Z}_{n^2})^*$ al \textit{azar} y se calcula el criptotexto como 
+$$c = E(n, m) := ((1+n)^m \cdot r^n)\, mod \, n^2 \in (\mathbb{Z}_{n^2})^* $$
+    \item \textbf{Descifrado}. Para descrifrar $c$ con la clave privada $(n, \phi(n))$ se hace $$m = D((n, \phi(n)), c) := \dfrac{(c^{\phi(n)}\, mod\, n^2)-1}{n} \cdot \phi(n)^{-1} \, mod \, n $$ donde $((c^{\phi(n)}\, mod\, n^2)-1)/n$ se calcula en $\mathbb{Z}$.
+\end{enumerate}    
+\end{frame}
+
+\begin{frame}{Esquema de Paillier}
+Hay que tener en cuenta que, $\mathbb{Z}_n$ es aditivo, y $(\mathbb{Z}_{n^2})^*$ multiplicativo. Además, el homomorfismo de grupos se define sobre la aplicación de descifrado
+$$D: (\mathbb{Z}_{n^2})^* \rightarrow \mathbb{Z}_{n}$$ 
+Por lo que, sean $m_1$ y $m_2 \in \mathbb{Z}$, la propiedad homomórfica queda definida por 
+$$D((n, \phi(n), c), (c_1 \cdot c_2)\, mod \, n^2) = (m_1 + m_2) \, mod \, n $$
+donde: 
+$$c_1 = E(n, m_1), \quad c_2 = E(n, m_2)$$
+\end{frame}
+
+%\begin{frame}{Implementación en Python: Paillier cryptosystem}
+%Utilizaremos el paquete \texttt{random} y la función \texttt{getprimeover} para hallar $r \in (\mathbb{Z}_{n^2})^* $ y generar los primos $p$ y $q$ respectivamente. 
+%\input{librerias_paillier_python}
+%\end{frame}
+
+%\begin{frame}{Implementación en Python: Paillier cryptosystem}
+%Generamos las claves pública y privada suponiendo que la longitud de N es de 1024. Generalmente se usan longitudes de 3072.
+%\input{pub_priv_paillier_python}
+%\end{frame}
+
+\begin{frame}{Implementación en Python: Paillier cryptosystem}
+\input{fun_paillier_python}
+\end{frame}
+
+%\begin{frame}{Implementación en Python: Paillier cryptosystem}
+%Calculamos 
+%$$ \texttt{producto\_p} = \prod_{i=0}^{i = l} c_i \, mod \, n^2 $$
+%donde l es la longitud de una lista con los valores encriptados a la que llamamos \texttt{fumar\_encrip\_P}. El código para esto
+%\input{prod_paillier_python}
+%\end{frame}
+
+\begin{frame}{Implementación en Python: Paillier cryptosystem}
+En local, dentro nuestra empresa, podemos descrifrarlo sabiendo que la función de descifrado obtendrá
+$$  \sum_{i=0}^l m_i \, mod \, n  $$  
+dicho numero debe representar la suma de pacientes fumadores y no fumadores de la columna SMOKING del dataset. En efecto, se obtiene 483, resultado coherente con el estudio realizado por RSA, ya que 
+$$ \texttt{El total de pacientes fumadores es: 174.} $$ 
+$$ \texttt{El total de pacientes no fumadores es: 135.} $$
+es decir, 
+$$ 172 \cdot 2 + 135 \cdot  1 = 483 $$
+\end{frame}
+\begin{frame}{Implementación en Python: Paillier cryptosystem}
+Bastaría con caracterizar con 0 y 1, en vez de 1 y 2, las opciones del dataset. De esta forma la suma representaría una de las opciones. 
+\newline
+\newline
+Por ser un homomorfismo aditivo, podemos calcular medias fácilmente. Un estudio del dataset, asociando 0 a M (male) y 1 a F (female) desprende el siguiente resultado 
+\begin{figure}[H]
+    	\centering
+		\includegraphics[scale=0.45]{IMG/grafica.png}
+	\end{figure}
+La media de edad de los pacientes de 62.7 años. De los cuales 162 son hombres y 147 mujeres. 
+\end{frame}
+
+\begin{frame}{Limitaciones algoritmo de Paillier}
+El ataque que intentamos para RSA en este caso es inútil. No obstante, se conocen formas de atacar estos sistemas permitiendo conocer, en nuestro caso por ejemplo, si un paciente en concreto es o no fumador. Este tipo de ataques se conocen como \textbf{Ataque de Texto Cifrado Escogido} o ataques CCA. Se elegirán dos mensajes, y uno de ellos (al azar) es cifrado, el criptotexto es entregado al atacante que intenta descifrar a cuál corresponde. El atacante, utiliza la propiedad homomórfica y adapta su ataque según la respuesta.
+\newline
+\newline
+\begin{quote}
+    ``Un esquema criptográfico se dice no maleable si la probabilidad de que el adversario encuentre dichos textos [...] no es significativamente mayor que dicha probabilidad para el cifrado de una cadena de bits $ x $ elegida al azar.'' \begin{flushright}
+        González Vasco, 2003, p.26
+    \end{flushright}
+\end{quote}
+\end{frame}
+
+\section{Solución final: Esquemas SHE y FHE}
+    \begin{frame}{Esquemas SHE y FHE}
+\Large{¿Existe un sistema de cifrado completamente homomórfico?}        \begin{figure}[H]
+    	\centering
+		\includegraphics[scale=0.7]{IMG/historia.png}
+	\end{figure}
+    \end{frame}
+
+\begin{frame}{Esquemas SHE y FHE}
+La diferencia entre el uso de un sistema parcialmente homomórfico (\textit{Somewhat Homomorphic Encryption} o SHE) y uno completamente homomórfico (\textit{Fully Homomorphic Encryption} o FHE), es que el segundo permite un número de operaciones no acotado. 
+\newline
+\newline
+Para la solución final se estudio el esquema Fan-Vercauteren cuyo espacio de textos claros corresponde a $ R_t = \mathbb{Z}_t [x]/(x^n + 1) $ y el de criptotextos a $ R_q = \mathbb{Z}_q [x]/(x^n + 1) $.  
+\end{frame}
+
+\begin{frame}{Esquema Van-Vercauteren}
+    Denotaremos $ R = \mathbb{Z} [x]/(x^n + 1) $.
+\begin{itemize}
+    \item \textbf{Generación de clave privada}: es un polinomio en $ R $ con coeficientes en $ \{ 0, 1 \} $.
+    \item \textbf{Generación de clave pública}: tomando $ a $ en $ R_q $ y un error $ e $ en función de una cierta distribución $ \chi $ sobre $ R $ así $$ \mbox{pubKey} = ([-(a \cdot s + e)]_q, a) \in R_q \times R_q $$ 
+    \item \textbf{Encriptación}: sea el texto claro $ m \in R_t $ y $ pk = (pk_0, pk_1) $ entonces $$  \texttt{Enc}(pk, m) = ([pk_o \cdot u  + e_1 + \Delta \cdot m]_q, [pk_1 \cdot u + e_2]_q) \in R_q \times R_q $$ 
+    \item \textbf{Desencriptación}: dado un criptotexto $ ct = \texttt{Enc}(pk, m) = (ct_0, ct_1) $ se desencripta usando la clave pública $ sk = s $ según $$ \texttt{Dec}(sk, ct) = \left[ \left \lfloor  \dfrac{t \cdot [ct_0 + ct_1 \cdot s]_q }{q} \right \rfloor  \right]_t \in R_t $$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Esquema Van-Vercauteren}
+La operación homomórfica de suma viene dada por  
+$$ [ct(s)]_q + [ct'(s)]_q = \Delta \cdot (m + m') + v + v' $$
+
+$$ [ct(s) + ct'(s)]_q = \Delta \cdot [m + m']_t + d \, mod \, q $$
+
+donde $ d = v + v' - (q - \Delta \cdot t) \cdot \varepsilon $.
+
+El producto requiere de una técnica intermedia llamada \textit{relinearization}.    
+\end{frame}
+
+
+\begin{frame}{Implementación en C++}
+Microsoft SEAL es una librería open source de criptografía homomórfica desarrollado por Cryptography and Privacy Research Group en Microsoft. El código se puede encontrar en \href{https://github.com/microsoft/SEAL}{GitHub}. 
+\end{frame}
+
+    
+%\appendix
+\section{Referencias}
+%\subsection<presentation>*{Referencias}
+
+\begin{frame}{Referencias}
+\begin{thebibliography}{10}
+	
+	\beamertemplatearticlebibitems
+	\bibitem{Vasco2003}
+          González Vasco, M.I.
+          \emph{Criptosistemas basados en Teoría de grupos}.
+          2003.
+
+    \beamertemplatebookbibitems
+	\bibitem{Milanov2009}
+          Milanov, E.
+          \emph{The RSA algorithm. RSA laboratories, 1-11}.
+          2009.
+
+    \beamertemplatebookbibitems
+	\bibitem{Pardo2012}
+          Pardo, J. L. G.
+          \emph{Cifrado homomórfico: ejemplos y aplicaciones. Gaceta de la Real Sociedad Matematica Española, 15(4), 697-712}.
+          20012.
+          
+\end{thebibliography}
+\end{frame}
+\end{document}
