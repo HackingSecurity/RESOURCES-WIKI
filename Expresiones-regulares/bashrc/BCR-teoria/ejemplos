@@ -1,4 +1,0 @@
-# del fichero /etc/password quiero saber quien usa una shell bash
-cat /etc/passwd | grep "sh$" | awk '{print $2}' FS=':'
-
-#tambien podemos usar el comando cut -> aunque vamos a exprimir más el comando awk
