@@ -1,0 +1,12 @@
+#man scp
+    #Opciones : -r recursiva -P puerto
+#Copiar recursivamente de una servidor a mi local
+sudo scp -r ubuntu@192.168.1.220:/home/ubuntu/GIT /Download
+
+#Copiar de mi local a un servidor
+sudo scp prueba.py ubuntu@192.168.1.220:/home/ubuntu/GIT/
+
+
+#Es posible copiar entre un servidor1 a un servidor 2
+# esto puede ser util si conocemos muy bien nuestras máquinas, pero como norma general
+#será mas fácil hacerlo desde un servidor logeado.

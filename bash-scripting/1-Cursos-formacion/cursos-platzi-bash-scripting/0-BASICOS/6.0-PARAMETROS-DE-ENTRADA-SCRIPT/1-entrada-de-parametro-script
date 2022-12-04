@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#Ejemplificar como se realiza el paso de opciones con o sin parámetros
+#Autor: DIY
+
+#ejemplo de ejecucion
+#./1-entrada-de-parametro-script algo mas -a
+
+#Recuperamos los argumentos de entrada al script de forma poco automatizada
+
+echo "Programa Opciones"
+echo "Opcion 1 enviada $0"
+echo "Opcion 2 enviada $1"
+echo "Mostrar opciones $*"
+
+#esta parte se explica en el apartado de bucles
+echo -e "\n"
+while [ -n "$1"]; then
+    echo "Valor $1"
+done
+
+echo -e "\n"
+echo "Recuperar valores"
+#recuperar los valores de entrada al ejecutar el script
+#recupera los valores de entrada hasta la $1
+while [ -n "$1"]
+do 
+case "$1" in
+-a) echo "-a option utilizada";;
+-b) echo "-b option utilizada";;
+-c) echo "-c option utilizada";;
+*) echo "$1 no es una opcion";;
+esac
+shift
+done
+
