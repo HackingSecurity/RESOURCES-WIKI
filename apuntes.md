@@ -34,6 +34,16 @@ https://sniferl4bs.com/2020/02/adios-rockyou.txt-bienvenido-kaonashi.txt/
 
 https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjNt9jQ3-D7AhXmzIUKHXtGBwUQFnoECAoQAQ&url=https%3A%2F%2Fgithub.com%2Fbrannondorsey%2Fnaive-hashcat%2Freleases%2Fdownload%2Fdata%2Frockyou.txt&usg=AOvVaw3snAERl1mU6Ccr4WFEazBd
 
+aqui podemos bajar el fichero rockyou.txt con todas contraseñas
+
+para nuestra prueba usamos "pepito" 
+
+cat rockyou.txt | grep "^pepito$"
+
+//para saber la linea
+
+cat rockyou.txt | grep "^pepito$" -n
+
 
 
 si podemos hacernos con un hash $6$ -> sha512
@@ -98,7 +108,9 @@ rm -r /tmp/*
 //ahora partiendo de una usuario no privilegios -> convertirnos en root
 
 
-chmod o+w file.sh
+service cron status
+
+chmod o+wx file.sh
 
 
 
@@ -122,7 +134,18 @@ touch procmon.sh
 chmod +x !$ -> permisos de ejecucion
 nano !$
 
+
+//concepto
+touch {file1, file2}
+nano file1 -> hola\n que\n tal\n
+nano file2 -> adios\n que\n tal\n
+diff file1 file2
+
+
 con la ayuda del comando ps -eo command
 
 #!/bin/bash -> cabeceras
+
+
+
 
