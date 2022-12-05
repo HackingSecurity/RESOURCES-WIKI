@@ -32,3 +32,16 @@ https://sniferl4bs.com/2020/02/adios-rockyou.txt-bienvenido-kaonashi.txt/
 
 https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjNt9jQ3-D7AhXmzIUKHXtGBwUQFnoECAoQAQ&url=https%3A%2F%2Fgithub.com%2Fbrannondorsey%2Fnaive-hashcat%2Freleases%2Fdownload%2Fdata%2Frockyou.txt&usg=AOvVaw3snAERl1mU6Ccr4WFEazBd
 
+
+
+si podemos hacernos con un hash $6$ -> sha512
+
+cat /etc/shadow | grep usuario -> hash
+
+Con john:
+
+john --wordlists=/usr/share/wordlists/rockyou.txt hash
+
+Si concuerda el algoritmo de encriptacion que es compatibles con john, empezara a comparar el hash con los que va generar john mediante la lista de constraseñas usuales.
+
+
