@@ -1,0 +1,6 @@
+ 
+ Partimos en el segmento de red predeterminado (192.168.1.20), por ejemplo
+
+route -n 
+
+

