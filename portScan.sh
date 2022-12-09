@@ -6,7 +6,7 @@
 if [ $1 ]; then
     #Primer argumento
     ip_address=$1
-    for port in $(seq 1 1000); do 
+    for port in $(seq 1 65535); do 
         #timeout 1 bash -c "echo '' > /dev/tcp/147.96.4.38/22" 2>/dev/null && echo "[*] Port x - Open"
         timeout 1 bash -c "echo '' > /dev/tcp/$ip_address/$port" 2>/dev/null && echo "[*] Port $port - Open" &
         
