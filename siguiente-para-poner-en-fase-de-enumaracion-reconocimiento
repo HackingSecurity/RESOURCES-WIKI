@@ -1,0 +1,51 @@
+# video 17 deteccion de versionesy servicios con nmap
+
+Vemos si esta activa nuestra maquina targe
+
+ping -c 1 IP 
+
+nmap -p- --open -T5 -v -n IP -oG allPorts
+
+//Como hayamos llamado nuestro funcion en ~/.bashrc
+extracport allPorts
+
+nmap -sC -sV -v -p80 IP -oN targeted
+
+
+//uso de el programa de whatweb
+
+sudo apt install whatweb http://IP 2>/dev/null
+
+whatweb http://IP 2>/dev/null
+
+Uso de plugin  wappalizer para el reconocimiento de servicios web
+
+cuando hayamos escaneado la máquina podemos ver su output 
+cat targeted
+
+# 18 tecnicas para agilizar nuestro escaneos con
+
+
+ping -c 1 IP 
+
+nmap -p- --open -T5 -v -n IP -oG allPorts 
+
+//escanear los puertos mas importantes
+nmap --top-ports 5000 --open -T5 -v -n IP -oG allPorts 
+
+//sin arp (Pn)
+nmap -sS --min-rate 5000 --open -v -n -Pn IP -oG -p- allPorts
+
+nmap -sV -sC -p80 IP oN targeted
+
+# 19. creacion de herramienta en bash para la deteccion de puertos TCP abiertos
+
+Buscando una forma alternativa para ver si hay puertos abiertos, que no sea nmap que genera mucho tráfico
+y ruido.
+
+touch portScan.sh
+
+uso de secuenciador
+
+seq 1 10
+
